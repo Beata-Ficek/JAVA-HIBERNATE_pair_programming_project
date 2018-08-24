@@ -1,7 +1,15 @@
-import java.lang.reflect.Array;
+package models;
+
+import models.Article;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+@Entity
+@Table(name="staff")
+@Inheritance(strategy = InheritanceType.JOINED)
 
 public abstract class Staff {
 
@@ -9,7 +17,7 @@ public abstract class Staff {
     private String name;
     private Date startDate;
     private int yearsOfService;
-    private List<Article> articles;
+//    private List<Article> articles;
 
     public Staff(){
 
@@ -17,13 +25,15 @@ public abstract class Staff {
 
     public Staff(String name, Date date, int yearsOfService){
         this.name = name;
-        this.startDate = startDate;
+        this.startDate = date;
         this.yearsOfService = yearsOfService;
-        this.articles = new ArrayList<Article>();
+//        this.articles = new ArrayList<Article>();
     }
 
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -32,6 +42,7 @@ public abstract class Staff {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -40,6 +51,7 @@ public abstract class Staff {
         this.name = name;
     }
 
+    @Column(name = "start_date")
     public Date getStartDate() {
         return startDate;
     }
@@ -48,6 +60,7 @@ public abstract class Staff {
         this.startDate = startDate;
     }
 
+    @Column(name = "years_of_service")
     public int getYearsOfService() {
         return yearsOfService;
     }
@@ -56,13 +69,14 @@ public abstract class Staff {
         this.yearsOfService = yearsOfService;
     }
 
-    public List<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
-    }
+//    @OneToMany(mappedBy="staff", fetch = FetchType.LAZY)
+//    public List<Article> getArticles() {
+//        return articles;
+//    }
+//
+//    public void setArticles(List<Article> articles) {
+//        this.articles = articles;
+//    }
 
 
 

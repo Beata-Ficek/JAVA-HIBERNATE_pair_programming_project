@@ -17,6 +17,8 @@
         <mapping class = "models.Staff"/>
         <mapping class = "models.Article"/>
         <mapping class = "models.Category"/>
+        <mapping class = "models.Editor"/>
+        <mapping class = "models.Journalist"/>
 
 
     </session-factory>

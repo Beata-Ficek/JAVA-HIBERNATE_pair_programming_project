@@ -1,7 +1,10 @@
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+package models;
 
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "articles")
 public class Article {
 
     private int id;
@@ -14,6 +17,7 @@ public class Article {
     private Date dateofApproval;
     private Date dateofSubmission;
     private boolean approved;
+    private String body;
 
     public Article(){
 
@@ -27,7 +31,7 @@ public class Article {
                    Category category,
                    Date dateofApproval,
                    Date dateofSubmission,
-                   boolean approved){
+                   String body){
         this.articleFormat = articleFormat;
         this.headline = headline;
         this.strapline = strapline;
@@ -36,8 +40,14 @@ public class Article {
         this.category = category;
         this.dateofApproval = dateofApproval;
         this.dateofSubmission = dateofSubmission;
+        this.approved = false;
+        this.body = body;
+
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -46,6 +56,7 @@ public class Article {
         this.id = id;
     }
 
+    @Column(name = "headline")
     public String getHeadline() {
         return headline;
     }
@@ -54,6 +65,7 @@ public class Article {
         this.headline = headline;
     }
 
+    @Column(name = "strapline")
     public String getStrapline() {
         return strapline;
     }
@@ -62,6 +74,8 @@ public class Article {
         this.strapline = strapline;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "editor_id", nullable = false)
     public Editor getEditor() {
         return editor;
     }
@@ -70,6 +84,8 @@ public class Article {
         this.editor = editor;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "journalist_id", nullable = false)
     public Journalist getJournalist() {
         return journalist;
     }
@@ -78,6 +94,8 @@ public class Article {
         this.journalist = journalist;
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
     public Category getCategory() {
         return category;
     }
@@ -86,6 +104,7 @@ public class Article {
         this.category = category;
     }
 
+    @Column(name = "date_of_approval")
     public Date getDateofApproval() {
         return dateofApproval;
     }
@@ -94,6 +113,7 @@ public class Article {
         this.dateofApproval = dateofApproval;
     }
 
+    @Column(name = "date_of_submission")
     public Date getDateofSubmission() {
         return dateofSubmission;
     }
@@ -102,7 +122,8 @@ public class Article {
         this.dateofSubmission = dateofSubmission;
     }
 
-    public boolean isApproved() {
+    @Column(name = "approved")
+    public boolean getApproved() {
         return approved;
     }
 
@@ -110,11 +131,21 @@ public class Article {
         this.approved = approved;
     }
 
+    @Enumerated(value = EnumType.STRING)
     public ArticleFormat getArticleFormat() {
         return articleFormat;
     }
 
     public void setArticleFormat(ArticleFormat articleFormat) {
         this.articleFormat = articleFormat;
+    }
+
+    @Column(name = "body")
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }
