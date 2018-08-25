@@ -34,4 +34,6 @@ public class Editor extends Staff {
         this.articles = articles;
     }
 
+
+
 }

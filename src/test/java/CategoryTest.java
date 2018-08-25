@@ -32,7 +32,7 @@ public class CategoryTest {
         article1 = new Article(ArticleFormat.FEATURE,
                 "The future is Codeclan",
                 "Promising Codeclan graduates to conquer the Tech World",
-                keith, mark, category2, dateOfApproval, getDateOfSubmission, "blabla");
+                keith, mark, category2, "blabla");
 
 
     }

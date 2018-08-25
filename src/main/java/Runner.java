@@ -27,9 +27,8 @@ public class Runner {
 
         Article technews1 = new Article(ArticleFormat.FEATURE, "CodeBase's VR revolution",
                 "Chopping-fruit-game has met its' match",
-                mark, diggory, techNews, dateOfAppArticle1, dateOfSubArticle1, "Hello");
+                mark, diggory, techNews, "Hello");
         DBHelper.save(technews1);
-
 
     }
 }

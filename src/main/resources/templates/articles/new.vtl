@@ -1,0 +1,47 @@
+<p class="pageHeader">New Article</p>
+
+<form action="/articles" method="post">
+    <label for="headline">Headline:</label>
+    <input class="inputbox" type="text" name="headline" required="true">
+
+    <label for="strapline">Strapline:</label>
+    <input class="inputbox" type="text" name="strapline" required="true">
+
+    <label for="journalist">Journalist's name:</label> <!-- NEW -->
+    <select id="journalist" name="journalist">
+        #foreach( $journalist in $journalists )
+        <option value="$journalist.getId()">$journalist.getName()</option>
+        #end
+    </select>
+
+    <label for="editor">Assigned by:</label> <!-- NEW -->
+    <select id="editor" name="editor">
+        #foreach( $editor in $editors )
+        <option value="$editor.getId()">$editor.getName()</option>
+        #end
+    </select>
+
+    <label for="category">Category:</label> <!-- NEW -->
+    <select id="category" name="category">
+        #foreach( $category in $categories )
+        <option value="$category.getId()">$category.getName()</option>
+        #end
+    </select>
+
+    <label for="articleFormats">Article Format:</label> <!-- NEW -->
+    <select id="articleFormats" name="articleFormat">
+        #foreach( $articleFormat in $articleFormats )
+        <option value="$articleFormat">$articleFormat.getHumanReadable()</option>
+        #end
+    </select>
+
+
+
+    <label for="body">Full text:</label>
+    <input class="inputbox" type="text" name="body" required="true">
+
+
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/articles" class="">Cancel</a>

@@ -1,7 +1,6 @@
 package models;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "articles")
@@ -14,8 +13,6 @@ public class Article {
     private Editor editor;
     private Journalist journalist;
     private Category category;
-    private Date dateofApproval;
-    private Date dateofSubmission;
     private boolean approved;
     private String body;
 
@@ -29,8 +26,6 @@ public class Article {
                    Editor editor,
                    Journalist journalist,
                    Category category,
-                   Date dateofApproval,
-                   Date dateofSubmission,
                    String body){
         this.articleFormat = articleFormat;
         this.headline = headline;
@@ -38,8 +33,6 @@ public class Article {
         this.editor = editor;
         this.journalist = journalist;
         this.category = category;
-        this.dateofApproval = dateofApproval;
-        this.dateofSubmission = dateofSubmission;
         this.approved = false;
         this.body = body;
 
@@ -74,7 +67,7 @@ public class Article {
         this.strapline = strapline;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "editor_id", nullable = false)
     public Editor getEditor() {
         return editor;
@@ -84,7 +77,7 @@ public class Article {
         this.editor = editor;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "journalist_id", nullable = false)
     public Journalist getJournalist() {
         return journalist;
@@ -94,32 +87,15 @@ public class Article {
         this.journalist = journalist;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     public Category getCategory() {
         return category;
     }
 
+
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    @Column(name = "date_of_approval")
-    public Date getDateofApproval() {
-        return dateofApproval;
-    }
-
-    public void setDateofApproval(Date dateofApproval) {
-        this.dateofApproval = dateofApproval;
-    }
-
-    @Column(name = "date_of_submission")
-    public Date getDateofSubmission() {
-        return dateofSubmission;
-    }
-
-    public void setDateofSubmission(Date dateofSubmission) {
-        this.dateofSubmission = dateofSubmission;
     }
 
     @Column(name = "approved")

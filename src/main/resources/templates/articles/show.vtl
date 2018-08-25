@@ -1,0 +1,18 @@
+<div>
+    <p> Headline: $article.getHeadline()</p>
+    <p> Strapline: $article.getStrapline()</p>
+    <p> Body: $article.getBody()</p>
+    <p> Article Format: $article.getArticleFormat()</p>
+    <p> Category: $article.getCategory().getName()</p>
+    <p> Editor: $article.getEditor().getName()</p>
+    <p> Journalist: $article.getJournalist().getName()</p>
+    <p> Body: $article.getBody()</p>
+</div>
+
+
+
+<a href="/articles/$article.getId()/edit" class="button center">Edit</a>
+<form action="/articles/$article.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+<a href="/articles" class="button center">Back to list</a>

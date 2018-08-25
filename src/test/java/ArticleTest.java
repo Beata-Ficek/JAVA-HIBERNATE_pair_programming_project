@@ -36,7 +36,7 @@ public class ArticleTest {
         codeclanArticle = new Article(ArticleFormat.FEATURE,
                 "The future is Codeclan",
                 "Promising Codeclan graduate to conquer the Tech World",
-                keith, mark, edTech, dateOfApproval, getDateOfSubmission, "Blablabla");
+                keith, mark, edTech, "Blablabla");
 
     }
 
@@ -78,6 +78,11 @@ public class ArticleTest {
     @Test
     public void hasEditor(){
         assertEquals(keith, codeclanArticle.getEditor());
+    }
+
+    @Test
+    public void hasEditorsname(){
+        assertEquals("Keith", codeclanArticle.getEditor().getName());
     }
 
     @Test

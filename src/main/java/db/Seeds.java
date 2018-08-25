@@ -32,12 +32,12 @@ public class Seeds {
 
         Article technews1 = new Article(ArticleFormat.FEATURE, "CodeBase's VR revolution",
                 "Chopping-fruit-game has met its' match",
-                mark, diggory, techNews, dateOfAppArticle1, dateOfSubArticle1, "Hello");
+                mark, diggory, techNews, "Hello");
         DBHelper.save(technews1);
 
         Article technews2 = new Article(ArticleFormat.COLUMN, "Codeclan",
                 "Welcome to Codeclan",
-                mark, diggory, techNews, dateOfAppArticle1, dateOfSubArticle1, "Hello");
+                mark, diggory, techNews, "Hello");
         DBHelper.save(technews2);
 
 
