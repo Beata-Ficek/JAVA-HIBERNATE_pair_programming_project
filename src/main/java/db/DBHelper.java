@@ -12,7 +12,8 @@ public class DBHelper {
     private static Transaction transaction;
     private static Session session;
 
-    public static void save(Object object){
+    public static void save(Object object) {
+
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
@@ -26,7 +27,25 @@ public class DBHelper {
         }
     }
 
-    public static void update(Object object){
+    public static <T> void deleteAll(Class classType) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Criteria cr = session.createCriteria(classType);
+            List<T> results = cr.list();
+            for (T result : results) {
+                session.delete(result);
+            }
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void update(Object object) {
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
@@ -40,7 +59,7 @@ public class DBHelper {
         }
     }
 
-    public static void delete(Object object){
+    public static void delete(Object object) {
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
@@ -54,14 +73,17 @@ public class DBHelper {
         }
     }
 
-
     public static <T> List<T> getAll(Class classType) {
         session = HibernateUtil.getSessionFactory().openSession();
         List<T> results = null;
         try {
+            transaction = session.beginTransaction();
             Criteria cr = session.createCriteria(classType);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+            transaction.commit();
             results = cr.list();
         } catch (HibernateException e) {
+            transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();
@@ -73,15 +95,17 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
         try {
+            transaction = session.beginTransaction();
             Criteria cr = session.createCriteria(classType);
             cr.add(Restrictions.eq("id", id));
             result = (T) cr.uniqueResult();
+            transaction.commit();
         } catch (HibernateException e) {
+            transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();
         }
         return result;
     }
-
 }

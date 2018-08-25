@@ -1,0 +1,30 @@
+
+<h1> Articles</h1>
+
+
+<div>
+<a href="/articles/new"> Create an Article</a>
+</div>
+
+<div class="container">
+<table style="width:100%">
+    #foreach($article in $articles)
+    <tr>
+        <th>Headline:</th>
+        <td>$article.getHeadline()</td>
+    </tr>
+    <tr>
+        <th>Strapline:</th>
+        <td>$article.getStrapline()</td>
+    </tr>
+    <tr>
+        <th>Article format:</th>
+        <td>$article.getArticleFormat()</td>
+    </tr>
+    <tr>
+        <th> See full article:</th>
+        <td> <a href="/articles/$article.getId()" class="">Details</a></td>
+    </tr>
+    #end
+</table>
+</div>
