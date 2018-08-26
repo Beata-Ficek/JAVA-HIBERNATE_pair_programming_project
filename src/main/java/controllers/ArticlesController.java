@@ -124,5 +124,13 @@ public class ArticlesController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+        post ("/articles/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            Article articleToDelete = DBHelper.find(Article.class, id);
+            DBHelper.delete(articleToDelete);
+            res.redirect("/articles");
+            return null;
+        }, new VelocityTemplateEngine());
     }
 }
