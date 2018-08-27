@@ -40,7 +40,7 @@ public class Seeds {
                 mark, diggory, techNews, "Hello");
         DBHelper.save(technews2);
 
-        Article technews3 = new Article(ArticleFormat.COLUMN, "Here's what happened to Microsoft's Xbox VR gaming headset",
+        Article technews3 = new Article(ArticleFormat.FEATURE, "Here's what happened to Microsoft's Xbox VR gaming headset",
                 "The company came close to announcing a VR headset, but it's been put on ice. Here’s why.",
                 mark, diggory, techNews, "Two months ago, Microsoft said it didn't have specific plans to create an Xbox VR headset. What it didn't say is that it had been working on a device, but put existing VR plans on hold until better technology comes along.\n" +
                 "\n" +

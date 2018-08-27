@@ -16,8 +16,6 @@ public class Article {
     private Category category;
     private boolean approved;
     private String body;
-    private LocalDate dateOfSubmission;
-    private LocalDate dateOfApproval;
 
     public Article(){
 
@@ -29,9 +27,7 @@ public class Article {
                    Editor editor,
                    Journalist journalist,
                    Category category,
-                   String body,
-                   LocalDate dateOfSubmission,
-                   LocalDate dateOfApproval){
+                   String body){
         this.articleFormat = articleFormat;
         this.headline = headline;
         this.strapline = strapline;
@@ -40,8 +36,6 @@ public class Article {
         this.category = category;
         this.approved = false;
         this.body = body;
-        this.dateOfApproval = new LocalDate;
-        this.dateOfSubmission = new LocalDate;
 
 
     }
@@ -133,19 +127,4 @@ public class Article {
         this.body = body;
     }
 
-    public LocalDate getDateOfSubmission() {
-        return dateOfSubmission;
-    }
-
-    public void setDateOfSubmission(LocalDate dateOfSubmission) {
-        this.dateOfSubmission = dateOfSubmission;
-    }
-
-    public LocalDate getDateOfApproval() {
-        return dateOfApproval;
-    }
-
-    public void setDateOfApproval(LocalDate dateOfApproval) {
-        this.dateOfApproval = dateOfApproval;
-    }
 }

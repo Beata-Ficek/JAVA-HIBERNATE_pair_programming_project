@@ -50,7 +50,6 @@ public class ArticlesController {
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Article> articles = DBHelper.getAll(Article.class);
-//            String search = req.queryParams("search");
             String matchString = req.queryParams("matchString");
             List<Article> searchResults = DBArticle.searchArticlesByTitle(matchString);
             model.put("searchResults", searchResults);

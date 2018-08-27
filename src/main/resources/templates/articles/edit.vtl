@@ -1,4 +1,4 @@
-<p class="pageHeader">Edit Article</p>
+<p>Edit Article</p>
 
 <form action="/articles/$article.getId()" method="post">
 
@@ -53,5 +53,6 @@
     <input type="inputbox" name="body" required="true" class="inputbox" value="$article.getBody()">
 
     <input type="submit" value="Save" class="button">
+
 </form>
-<a href="/articles/$article.getId()" class="button center">Cancel</a>
+<a href="/articles/$article.getId()">Cancel</a>
