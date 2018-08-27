@@ -3,6 +3,7 @@ package models;
 import models.Article;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ public abstract class Staff {
 
     private int id;
     private String name;
-    private Date startDate;
+    private LocalDate startDate;
     private int yearsOfService;
 //    private List<Article> articles;
 
@@ -23,7 +24,7 @@ public abstract class Staff {
 
     }
 
-    public Staff(String name, Date date, int yearsOfService){
+    public Staff(String name, LocalDate date, int yearsOfService){
         this.name = name;
         this.startDate = date;
         this.yearsOfService = yearsOfService;
@@ -52,11 +53,11 @@ public abstract class Staff {
     }
 
     @Column(name = "start_date")
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 

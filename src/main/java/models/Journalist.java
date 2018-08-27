@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Journalist extends Staff {
 
     }
 
-    public Journalist(String name, Date date, int yearsOfService) {
+    public Journalist(String name, LocalDate date, int yearsOfService) {
         super(name, date, yearsOfService);
         this.articles = new ArrayList<>();
     }

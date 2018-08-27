@@ -2,15 +2,16 @@ import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class ArticleTest {
 
-    Date date1;
-    Date dateOfApproval;
-    Date getDateOfSubmission;
+    LocalDate date1;
+    LocalDate dateOfApproval;
+    LocalDate getDateOfSubmission;
     Article codeclanArticle;
     Editor keith;
     Editor judy;
@@ -22,9 +23,9 @@ public class ArticleTest {
     @Before
     public void before(){
 
-        date1 = new Date(2017, 06, 11);
-        dateOfApproval = new Date(2017, 01, 11);
-        getDateOfSubmission = new Date (2017, 01, 13);
+        date1 =  LocalDate.of(2017, 06, 11);
+        dateOfApproval =  LocalDate.of(2017, 01, 11);
+        getDateOfSubmission =  LocalDate.of (2017, 01, 13);
         mark = new Journalist("Mark", date1, 1);
         riccardo = new Journalist("Riccardo", date1, 1);
         keith = new Editor("Keith", date1, 1);

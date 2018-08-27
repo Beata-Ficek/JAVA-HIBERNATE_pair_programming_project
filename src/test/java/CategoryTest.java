@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,20 +13,20 @@ public class CategoryTest {
     Category category1;
     Category category2;
     Article article1;
-    Date dateOfApproval;
-    Date getDateOfSubmission;
+    LocalDate dateOfApproval;
+    LocalDate getDateOfSubmission;
     Editor keith;
     Journalist mark;
-    Date date1;
+    LocalDate date1;
 
 
     @Before()
         public void before() {
         category1 = new Category("SciTech");
         category2 = new Category("Interviews");
-        dateOfApproval = new Date(2017, 01, 11);
-        getDateOfSubmission = new Date (2017, 01, 13);
-        date1 = new Date(2017, 06, 11);
+        dateOfApproval = LocalDate.of(2017, 01, 11);
+        getDateOfSubmission =  LocalDate.of(2017, 01, 13);
+        date1 =  LocalDate.of(2017, 06, 11);
         mark = new Journalist("Mark", date1, 1);
         keith = new Editor("Keith", date1, 1);
         article1 = new Article(ArticleFormat.FEATURE,
