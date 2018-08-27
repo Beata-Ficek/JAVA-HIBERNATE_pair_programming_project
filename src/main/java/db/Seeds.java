@@ -7,9 +7,10 @@ import java.util.Date;
 public class Seeds {
     public static void seedData() {
 
+        DBHelper.deleteAll(Article.class);
         DBHelper.deleteAll(Journalist.class);
         DBHelper.deleteAll(Editor.class);
-        DBHelper.deleteAll(Article.class);
+
 
 
         Editor mark = new Editor ("Mark Ditzel", new Date(2017, 07, 25), 1);

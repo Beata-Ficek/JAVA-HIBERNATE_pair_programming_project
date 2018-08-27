@@ -18,6 +18,7 @@ public class NewsController {
 //        staticFileLocation("/public");
 
         ArticlesController articlesController = new ArticlesController();
+        JournalistController journalistController = new JournalistController();
 
         get("/", (req, res) -> {
         Map<String, Object> model = new HashMap<>();

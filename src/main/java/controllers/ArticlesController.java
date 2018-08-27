@@ -1,11 +1,11 @@
 package controllers;
 
+import db.DBArticle;
 import db.DBHelper;
 import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +20,8 @@ public class ArticlesController {
     }
 
     private void setupEndPoints() {
+
+        //EDIT
 
         get("/articles/:id/edit", (req, res) -> {
             Integer intArticleId = Integer.parseInt(req.params(":id"));
@@ -43,15 +45,22 @@ public class ArticlesController {
         }, new VelocityTemplateEngine());
 
 
+        //INDEX
+
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Article> articles = DBHelper.getAll(Article.class);
+
+            String matchString = req.queryParams("matchString");
+            List<Article> searchResults = DBArticle.searchArticlesByTitle(matchString);
+
             model.put("articles", articles);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
 
+        //NEW
 
         get("/articles/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -67,15 +76,18 @@ public class ArticlesController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+
+        //SHOW
+
         get("/articles/:id", (req, res) -> {
-            String strArticleId = req.params(":id");
-            Integer intArticleId = Integer.parseInt(strArticleId);
+            Integer intArticleId = Integer.parseInt(req.params(":id"));
             Article article = DBHelper.find(Article.class, intArticleId);
             Map<String, Object> model = new HashMap<>();
             model.put("article", article);
             model.put("template", "templates/articles/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
 
 
         post("/articles", (req, res) -> {
@@ -98,8 +110,8 @@ public class ArticlesController {
         }, new VelocityTemplateEngine());
 
         post("/articles/:id", (req, res) -> {
-            String stArticleId = req.params(":id");
-            Integer intArticleId = Integer.parseInt(stArticleId);
+
+            Integer intArticleId = Integer.parseInt(req.params(":id"));
             Article article = DBHelper.find(Article.class, intArticleId);
             int journalistId = Integer.parseInt(req.queryParams("journalist"));
             int editorId = Integer.parseInt(req.queryParams("editor"));

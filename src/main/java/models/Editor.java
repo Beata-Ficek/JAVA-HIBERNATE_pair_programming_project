@@ -25,7 +25,7 @@ public class Editor extends Staff {
     }
 
 
-    @OneToMany(mappedBy="editor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="editor", fetch = FetchType.EAGER)
     public List<Article> getArticles() {
         return articles;
     }

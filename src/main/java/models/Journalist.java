@@ -23,7 +23,7 @@ public class Journalist extends Staff {
     }
 
 
-    @OneToMany(mappedBy="journalist", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="journalist", fetch = FetchType.EAGER)
     public List<Article> getArticles() {
         return articles;
     }

@@ -1,7 +1,11 @@
+import db.DBArticle;
 import db.DBHelper;
 import models.*;
 
 import java.util.Date;
+import java.util.List;
+
+import static db.DBArticle.searchArticlesByTitle;
 
 public class Runner {
 
@@ -29,6 +33,8 @@ public class Runner {
                 "Chopping-fruit-game has met its' match",
                 mark, diggory, techNews, "Hello");
         DBHelper.save(technews1);
+
+        List<Article> articles = DBArticle.searchArticlesByTitle("revolution");
 
     }
 }
