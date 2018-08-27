@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ public class Editor extends Staff {
 
     }
 
-    public Editor(String name, Date date, int yearsOfService) {
+    public Editor(String name, LocalDate date, int yearsOfService) {
         super(name, date, yearsOfService);
         this.articles = new ArrayList<Article>();
     }

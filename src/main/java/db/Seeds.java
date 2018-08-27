@@ -2,6 +2,7 @@ package db;
 
 import models.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Seeds {
@@ -13,14 +14,14 @@ public class Seeds {
 
 
 
-        Editor mark = new Editor ("Mark Ditzel", new Date(2017, 07, 25), 1);
+        Editor mark = new Editor ("Mark Ditzel", LocalDate.of(2015, 12, 31), 1);
         DBHelper.save(mark);
-        Editor beata = new Editor ("Beata Ficek", new Date(2017, 02, 11), 2);
+        Editor beata = new Editor ("Beata Ficek", LocalDate.of(2017, 02, 11), 2);
         DBHelper.save(beata);
 
-        Journalist vicky = new Journalist ("Victoria Jackson", new Date(2010, 07, 12), 8);
+        Journalist vicky = new Journalist ("Victoria Jackson",  LocalDate.of(2010, 07, 12), 8);
         DBHelper.save(vicky);
-        Journalist diggory = new Journalist ("Diggory Phillbrow", new Date (2014, 11,02), 4);
+        Journalist diggory = new Journalist ("Diggory Phillbrow", LocalDate.of (2014, 11,02), 4);
         DBHelper.save(diggory);
 
         Category techNews = new Category("Tech News");
