@@ -116,7 +116,7 @@ public class Article {
         this.articleFormat = articleFormat;
     }
 
-    @Column(name = "body")
+    @Column(name = "body", length = 1000000)
     public String getBody() {
         return body;
     }

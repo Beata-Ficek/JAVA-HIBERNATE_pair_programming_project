@@ -10,31 +10,58 @@
 
 <div>
     <!--<form + submit button>-->
-    Search for an article: <input type="text" placeholder="Search..">
-    <a href="/articles" class="button"> Search </a>
+    <form action="/articles" method="get">
+        <label for="search" id="search">Search for an article: </label>
+        <input type="search" placeholder="Search.." name="matchString">
+        <input type="submit" class="button" value="Submit">
+    </form>
 </div>
 
 <br><br>
 
 <div class="container">
-<table style="width:100%">
-    #foreach($article in $articles)
-    <tr>
-        <th>Headline:</th>
-        <td>$article.getHeadline()</td>
-    </tr>
-    <tr>
-        <th>Strapline:</th>
-        <td>$article.getStrapline()</td>
-    </tr>
-    <tr>
-        <th>Article category:</th>
-        <td>$article.getCategory().getName()</td>
-    </tr>
-    <tr>
-        <th> See full article:</th>
-        <td> <a href="/articles/$article.getId()" class="button">Details</a></td>
-    </tr>
+<table style="width:70%">
+
+    #if ($searchResults.size() > 0)
+
+        #foreach($searchResult in $searchResults)
+        <tr>
+            <th> Headline: </th>
+            <td> $searchResult.getHeadline()</td>
+        </tr><tr>
+            <th> Strapline: </th>
+            <td> $searchResult.getStrapline()</td>
+        </tr><tr>
+            <th> Category: </th>
+            <td>$searchResult.getCategory().getName()</td>
+        </tr><tr>
+            <th>See full article:</th>
+            <td><a href="/articles/$searchResult.getId()">Details</a></td>
+            </tr>
+        <tr></tr>
+        #end
+</table>
+    <table style="width:70%">
+    #else
+        #foreach($article in $articles)
+        <tr>
+            <th>Headline:</th>
+            <td>$article.getHeadline()</td>
+        </tr>
+        <tr>
+            <th>Strapline:</th>
+            <td>$article.getStrapline()</td>
+        </tr>
+        <tr>
+            <th>Article category:</th>
+            <td>$article.getCategory().getName()</td>
+        </tr>
+        <tr>
+            <th> See full article:</th>
+            <td> <a href="/articles/$article.getId()">Details</a></td>
+        </tr>
+
+        #end
     #end
 </table>
 </div>
