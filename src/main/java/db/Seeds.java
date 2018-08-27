@@ -29,8 +29,6 @@ public class Seeds {
         Category interviews = new Category("Interviews");
         DBHelper.save(interviews);
 
-        Date dateOfAppArticle1 = new Date(2018, 06,11);
-        Date dateOfSubArticle1 = new Date(2018, 06, 9);
 
         Article technews1 = new Article(ArticleFormat.FEATURE, "CodeBase's VR revolution",
                 "Chopping-fruit-game has met its' match",
