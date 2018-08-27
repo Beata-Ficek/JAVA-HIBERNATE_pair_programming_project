@@ -53,6 +53,62 @@ public class JournalistController{
             return null;
         }, new VelocityTemplateEngine());
 
+
+        // SHOW = Show a specific journalist
+        get("/journalists/:id", (req, res) -> {
+            String strId = req.params(":id");
+            int intId = Integer.parseInt(strId);
+            Journalist journalist = DBHelper.find(Journalist.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("journalist", journalist);
+            model.put("template", "templates/journalists/show.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        // DELETE = Remove a specific journalist
+
+        post("/journalists/:id/delete", (req, res)->{
+            int id = Integer.parseInt(req.params(":id"));
+            Journalist journalist = DBHelper.find(Journalist.class, id);
+            DBHelper.delete(journalist);
+            res.redirect("/journalists");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        // EDIT = Update a pre-existing journalist
+        get("/journalists/:id/edit", (req, res) -> {
+            Integer id = Integer.parseInt(req.params(":id"));
+            Journalist journalist = DBHelper.find(Journalist.class, id);
+
+            Map<String, Object> model = new HashMap<>();
+
+            model.put("journalist", journalist);
+            model.put("template", "templates/journalists/edit.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        // UPDATE = Save the updated journalist to db
+        post("/journalists/:id", (req, res) -> {
+            Integer Id = Integer.parseInt(req.params(":id"));
+            Journalist journalist = DBHelper.find(Journalist.class, Id);
+
+            String name = req.queryParams("name");
+            String startDateString = req.queryParams("startDate");
+            LocalDate startDate = LocalDate.parse(startDateString);
+            int yearsOfService = Integer.parseInt(req.queryParams("yearsOfService"));
+
+
+            journalist.setName(name);
+            journalist.setStartDate(startDate);
+            journalist.setYearsOfService(yearsOfService);
+            DBHelper.update(journalist);
+
+            res.redirect("/journalists/"+Id);
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 
 }

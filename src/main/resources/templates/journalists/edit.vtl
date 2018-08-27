@@ -1,0 +1,15 @@
+<p class="pageHeader">Edit Journalist</p>
+
+<form action="/journalists/$journalist.getId()" method="post">
+    <label for="name">Name:</label>
+    <input class="name" type="text" name="name" required="true" value="$journalist.getName()" id = "name">
+
+    <label for="startDate">Date Started:</label>
+    <input class="inputbox" type="date" name="startDate" required="true" value="$journalist.getStartDate()" id = "startDate">
+
+    <label for="yearsOfService">Years Served:</label>
+    <input type="number" name="yearsOfService" required="true" class="inputbox" value="$journalist.getYearsOfService()" id = 'yearsOfService'>
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/journalists" class="button center">Cancel</a>

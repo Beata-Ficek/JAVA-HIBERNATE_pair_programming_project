@@ -1,0 +1,15 @@
+<div>
+    <p> Name: $journalist.getName()</p>
+    <p> Date Started: $journalist.getStartDate()</p>
+    <p> Years Served: $journalist.getYearsOfService()</p>
+</div>
+
+<a href="/journalists/$journalist.getId()/edit" class="button center">Edit</a>
+
+<form action="/journalists/$journalist.getId()/delete" method="post">
+
+    <input type="submit" value="Delete" class="button center">
+
+</form>
+
+<a href="/journalists" class="button center">Back to list</a>
