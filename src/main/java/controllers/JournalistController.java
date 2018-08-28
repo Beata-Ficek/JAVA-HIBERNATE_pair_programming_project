@@ -76,6 +76,7 @@ public class JournalistController{
             return null;
         }, new VelocityTemplateEngine());
 
+
         // EDIT = Update a pre-existing journalist
         get("/journalists/:id/edit", (req, res) -> {
             Integer id = Integer.parseInt(req.params(":id"));

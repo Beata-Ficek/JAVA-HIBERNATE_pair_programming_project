@@ -4,12 +4,11 @@
     <p> Years Served: $journalist.getYearsOfService()</p>
 </div>
 
-<a href="/journalists/$journalist.getId()/edit" class="button center">Edit</a>
+<a href="/journalists/$journalist.getId()/edit">Edit</a>
 
 <form action="/journalists/$journalist.getId()/delete" method="post">
-
-    <input type="submit" value="Delete" class="button center">
+    <input type="submit" value="Delete">
 
 </form>
 
-<a href="/journalists" class="button center">Back to list</a>
+<a href="/journalists">Back to list</a>

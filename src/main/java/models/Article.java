@@ -17,6 +17,7 @@ public class Article {
     private boolean approved;
     private String body;
 
+
     public Article(){
 
     }
@@ -27,7 +28,7 @@ public class Article {
                    Editor editor,
                    Journalist journalist,
                    Category category,
-                   String body){
+                   String body) {
         this.articleFormat = articleFormat;
         this.headline = headline;
         this.strapline = strapline;

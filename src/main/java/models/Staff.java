@@ -70,14 +70,6 @@ public abstract class Staff {
         this.yearsOfService = yearsOfService;
     }
 
-//    @OneToMany(mappedBy="staff", fetch = FetchType.LAZY)
-//    public List<Article> getArticles() {
-//        return articles;
-//    }
-//
-//    public void setArticles(List<Article> articles) {
-//        this.articles = articles;
-//    }
 
 
 

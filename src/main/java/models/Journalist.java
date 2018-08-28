@@ -1,9 +1,8 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,8 +22,8 @@ public class Journalist extends Staff {
         this.articles = new ArrayList<>();
     }
 
-
-    @OneToMany(mappedBy="journalist", fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany( mappedBy="journalist", fetch = FetchType.EAGER)
     public List<Article> getArticles() {
         return articles;
     }
@@ -32,5 +31,4 @@ public class Journalist extends Staff {
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
-
 }

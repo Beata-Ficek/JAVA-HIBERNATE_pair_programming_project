@@ -8,9 +8,11 @@ import java.util.Date;
 public class Seeds {
     public static void seedData() {
 
+
         DBHelper.deleteAll(Article.class);
         DBHelper.deleteAll(Journalist.class);
         DBHelper.deleteAll(Editor.class);
+        DBHelper.deleteAll(Category.class);
 
 
 
@@ -32,7 +34,7 @@ public class Seeds {
 
         Article technews1 = new Article(ArticleFormat.FEATURE, "CodeBase's VR revolution",
                 "Chopping-fruit-game has met its' match",
-                mark, diggory, techNews, "Hello");
+                beata, vicky, techNews, "Hello");
         DBHelper.save(technews1);
 
         Article technews2 = new Article(ArticleFormat.COLUMN, "Codeclan",
