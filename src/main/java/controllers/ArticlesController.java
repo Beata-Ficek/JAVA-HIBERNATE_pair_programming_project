@@ -50,7 +50,7 @@ public class ArticlesController {
 
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Article> articles = DBHelper.getAll(Article.class);
+            List<Article> articles = DBArticle.orderByDate();
             String matchString = req.queryParams("matchString");
             List<Article> searchResults = DBArticle.searchArticlesByTitle(matchString);
             model.put("searchResults", searchResults);
@@ -138,7 +138,7 @@ public class ArticlesController {
             article.setDateOfSubmission(dateOfSubmission);
             DBHelper.update(article);
             res.redirect("/articles");
-            return null;
+            return new ModelAndView(new HashMap<String, Object>(), "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
 
@@ -147,7 +147,7 @@ public class ArticlesController {
             Article articleToDelete = DBHelper.find(Article.class, id);
             DBHelper.delete(articleToDelete);
             res.redirect("/articles");
-            return null;
+            return new ModelAndView(new HashMap<String, Object>(), "templates/layout.vtl");
         }, new VelocityTemplateEngine());
     }
 }

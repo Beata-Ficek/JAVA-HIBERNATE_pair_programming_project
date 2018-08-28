@@ -8,13 +8,17 @@ import java.util.Date;
 public class Seeds {
     public static void seedData() {
 
+//
+//        DBHelper.deleteAll(Category.class);
+//        DBHelper.deleteAll(Article.class);
+//        DBHelper.deleteAll(Journalist.class);
+//        DBHelper.deleteAll(Editor.class);
 
-        DBHelper.deleteAll(Article.class);
-        DBHelper.deleteAll(Journalist.class);
-        DBHelper.deleteAll(Editor.class);
-        DBHelper.deleteAll(Category.class);
 
-
+        Category techNews = new Category("Tech News");
+        DBHelper.save(techNews);
+        Category interviews = new Category("Interviews");
+        DBHelper.save(interviews);
 
         Editor mark = new Editor ("Mark Ditzel", LocalDate.of(2015, 12, 31), 1);
         DBHelper.save(mark);
@@ -26,10 +30,7 @@ public class Seeds {
         Journalist diggory = new Journalist ("Diggory Phillbrow", LocalDate.of (2014, 11,02), 4);
         DBHelper.save(diggory);
 
-        Category techNews = new Category("Tech News");
-        DBHelper.save(techNews);
-        Category interviews = new Category("Interviews");
-        DBHelper.save(interviews);
+
 
 
         Article technews1 = new Article(ArticleFormat.FEATURE, "CodeBase's VR revolution",
@@ -41,6 +42,11 @@ public class Seeds {
                 "Welcome to Codeclan",
                 mark, diggory, techNews, "Hello", LocalDate.of(2015, 02, 01));
         DBHelper.save(technews3);
+
+        Article technews4 = new Article(ArticleFormat.COLUMN, "Codeclan",
+                "Newest Article",
+                mark, vicky, techNews, "Hello", LocalDate.of(2018, 07, 12));
+        DBHelper.save(technews4);
 
         Article technews2 = new Article(ArticleFormat.FEATURE, "Here's what happened to Microsoft's Xbox VR gaming headset",
                 "The company came close to announcing a VR headset, but it's been put on ice. Here’s why.",

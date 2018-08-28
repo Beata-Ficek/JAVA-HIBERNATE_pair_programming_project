@@ -44,7 +44,7 @@ public class Category {
         this.name = name;
     }
 
-    @OneToMany(mappedBy="category", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="category", fetch = FetchType.EAGER)
     public List<Article> getArticles() {
         return articles;
     }

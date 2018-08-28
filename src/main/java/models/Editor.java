@@ -28,7 +28,7 @@ public class Editor extends Staff {
         this.articles = new ArrayList<Article>();
     }
 
-
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @OneToMany(mappedBy="editor", fetch = FetchType.EAGER)
     public List<Article> getArticles() {
         return articles;
