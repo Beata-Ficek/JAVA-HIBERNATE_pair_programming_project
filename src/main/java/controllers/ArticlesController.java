@@ -6,6 +6,7 @@ import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class ArticlesController {
 
     private void setupEndPoints() {
 
-        //EDIT
+//        EDIT
 
         get("/articles/:id/edit", (req, res) -> {
             Integer intArticleId = Integer.parseInt(req.params(":id"));
@@ -59,7 +60,7 @@ public class ArticlesController {
         }, new VelocityTemplateEngine());
 
 
-        //NEW
+//        NEW
 
         get("/articles/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -75,8 +76,7 @@ public class ArticlesController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-
-        //SHOW
+//        //SHOW
 
         get("/articles/:id", (req, res) -> {
             Integer intArticleId = Integer.parseInt(req.params(":id"));
@@ -87,13 +87,14 @@ public class ArticlesController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-
+        //POST NEW
 
         post("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int journalistId = Integer.parseInt(req.queryParams("journalist"));
             int editorId = Integer.parseInt(req.queryParams("editor"));
             int categoryId = Integer.parseInt(req.queryParams("category"));
+            String dateOfSubmissionString = req.queryParams("dateOfSubmission");
             Journalist journalist = DBHelper.find(Journalist.class, journalistId);
             Editor editor = DBHelper.find(Editor.class, editorId);
             Category category = DBHelper.find(Category.class, categoryId);
@@ -102,11 +103,13 @@ public class ArticlesController {
             String strapline = req.queryParams("strapline");
             String body = req.queryParams("body");
 
-            Article article = new Article(articleFormat, headline, strapline, editor, journalist, category, body);
+            Article article = new Article(articleFormat, headline, strapline, editor, journalist, category, body, LocalDate.parse(dateOfSubmissionString));
             DBHelper.save(article);
             res.redirect("/articles");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        // POST UPDATE
 
         post("/articles/:id", (req, res) -> {
 
@@ -122,6 +125,8 @@ public class ArticlesController {
             String headline = req.queryParams("headline");
             String strapline = req.queryParams("strapline");
             String body = req.queryParams("body");
+            String dateOfSubmissionString = req.queryParams("dateOfSubmission");
+            LocalDate dateOfSubmission = LocalDate.parse(dateOfSubmissionString);
 
             article.setJournalist(journalist);
             article.setEditor(editor);
@@ -130,6 +135,7 @@ public class ArticlesController {
             article.setHeadline(headline);
             article.setStrapline(strapline);
             article.setBody(body);
+            article.setDateOfSubmission(dateOfSubmission);
             DBHelper.update(article);
             res.redirect("/articles");
             return null;

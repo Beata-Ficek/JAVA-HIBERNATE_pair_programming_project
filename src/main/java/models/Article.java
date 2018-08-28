@@ -16,6 +16,7 @@ public class Article {
     private Category category;
     private boolean approved;
     private String body;
+    private LocalDate dateOfSubmission;
 
 
     public Article(){
@@ -28,7 +29,7 @@ public class Article {
                    Editor editor,
                    Journalist journalist,
                    Category category,
-                   String body) {
+                   String body, LocalDate date) {
         this.articleFormat = articleFormat;
         this.headline = headline;
         this.strapline = strapline;
@@ -37,6 +38,7 @@ public class Article {
         this.category = category;
         this.approved = false;
         this.body = body;
+        this.dateOfSubmission = date;
 
 
     }
@@ -128,4 +130,12 @@ public class Article {
         this.body = body;
     }
 
+    @Column(name="date_of_submission")
+    public LocalDate getDateOfSubmission() {
+        return dateOfSubmission;
+    }
+
+    public void setDateOfSubmission(LocalDate dateOfSubmission) {
+        this.dateOfSubmission = dateOfSubmission;
+    }
 }

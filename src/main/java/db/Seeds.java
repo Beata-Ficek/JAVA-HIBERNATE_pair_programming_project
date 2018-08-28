@@ -34,15 +34,15 @@ public class Seeds {
 
         Article technews1 = new Article(ArticleFormat.FEATURE, "CodeBase's VR revolution",
                 "Chopping-fruit-game has met its' match",
-                beata, vicky, techNews, "Hello");
+                beata, vicky, techNews, "Hello", LocalDate.of(2018, 07, 06));
         DBHelper.save(technews1);
 
-        Article technews2 = new Article(ArticleFormat.COLUMN, "Codeclan",
+        Article technews3 = new Article(ArticleFormat.COLUMN, "Codeclan",
                 "Welcome to Codeclan",
-                mark, diggory, techNews, "Hello");
-        DBHelper.save(technews2);
+                mark, diggory, techNews, "Hello", LocalDate.of(2015, 02, 01));
+        DBHelper.save(technews3);
 
-        Article technews3 = new Article(ArticleFormat.FEATURE, "Here's what happened to Microsoft's Xbox VR gaming headset",
+        Article technews2 = new Article(ArticleFormat.FEATURE, "Here's what happened to Microsoft's Xbox VR gaming headset",
                 "The company came close to announcing a VR headset, but it's been put on ice. Here’s why.",
                 mark, diggory, techNews, "Two months ago, Microsoft said it didn't have specific plans to create an Xbox VR headset. What it didn't say is that it had been working on a device, but put existing VR plans on hold until better technology comes along.\n" +
                 "\n" +
@@ -94,8 +94,8 @@ public class Seeds {
                 "\n" +
                 "But there's another and potentially more pressing question Microsoft would have to answer if it released an Xbox VR device: \"Do Xbox gamers really want VR?\" said Brian Blau, an analyst at Gartner who used to work in the VR industry. Gamers, he noted, tend to be vocal about what they want to buy from companies, and he hasn't noticed many people clamoring for an Xbox headset.\n" +
                 "\n" +
-                "\"I haven't seen the gamer community rally around VR like they have other things,\" he added.");
-        DBHelper.save(technews3);
+                "\"I haven't seen the gamer community rally around VR like they have other things,\" he added.", LocalDate.of(2018, 04, 05));
+        DBHelper.save(technews2);
     }
 
 }

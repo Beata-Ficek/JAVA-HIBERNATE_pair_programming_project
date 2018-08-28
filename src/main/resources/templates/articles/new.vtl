@@ -21,12 +21,17 @@
         #end
     </select>
 
+
     <label for="category">Category:</label> <!-- NEW -->
     <select id="category" name="category">
         #foreach( $category in $categories )
         <option value="$category.getId()">$category.getName()</option>
         #end
     </select>
+
+    <label for="dateOfSubmission">Date submitted:</label>
+    <input class="inputbox" type="date" name="dateOfSubmission" required="true" id = "dateOfSubmission">
+
 
     <label for="articleFormats">Article Format:</label> <!-- NEW -->
     <select id="articleFormats" name="articleFormat">

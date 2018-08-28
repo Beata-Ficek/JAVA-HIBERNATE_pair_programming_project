@@ -48,9 +48,11 @@
         #end
     </select>
 
-
     <label for="body">Body:</label>
     <input type="inputbox" name="body" required="true" class="inputbox" value="$article.getBody()">
+
+    <label for="dateOfSubmission">Submitted on:</label>
+    <input type="date" name="dateOfSubmission" required="true" class="inputbox" value="$article.getDateOfSubmission()">
 
     <input type="submit" value="Save" class="button">
 
