@@ -7,15 +7,16 @@
     }
 
     body {
-      background-color: #F4F4F9;
-      font-family: 'Droid Serif', serif;
+      background-color: white;
+      font-family: 'Roboto', sans-serif;
+      color: black;
     }
 
     h1 {
-      color: black;
+      color: white;
       position: center;
       position: relative;
-      font-family: 'Titillium Web', sans-serif;
+     font-family: 'Roboto', sans-serif;
       font-weight: bold;
        font-size: 50px
     }
@@ -30,12 +31,12 @@
       display: flex;
       min-width: 200px;
       width: 16%;
-      background-color: #B8DBD9;
+      background-color: #fbfbfb;
 
     }
 
     .flex-container > div {
-      background-color: #B8DBD9;
+      background-color: #fbfbfb;
       margin: 4px;
       padding: 12px;
       font-size: 17px;
@@ -46,6 +47,7 @@ display: flex;
 flex-direction: row;
 justify-content: center;
   align-items: center;
+
 }
 
 .nav2-container > div{
@@ -53,6 +55,7 @@ background-color: #B8DBD9;
 align-items: center;
 justify-content: center;
   align-items: center;
+
 }
 
 
@@ -111,7 +114,7 @@ justify-content: center;
     border-radius: 6px;}
 
        .button-create{
-        background-color: #04724D;
+        background-color: #C6D207;
         border: none;
         color: white;
         padding: 10px 20px;
@@ -122,7 +125,7 @@ justify-content: center;
         border-radius: 6px;}
 
    .button-nav{
-      background-color: #586F7C;
+      background-color: black;
       border: none;
       color: white;
       padding: 10px 20px;
@@ -158,9 +161,10 @@ justify-content: center;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: white;
+    background-color: #080357;
      display: block;
         padding: 6px;
+        margin-bottom: 40px;
 }
 
 .article-table:last-child {
@@ -180,5 +184,9 @@ height:250px;
 p{
  font-family: 'Titillium Web', sans-serif;
       font-weight: bold;
-       font-size:25px
+       font-size:20px
 }
+
+.color-container{
+color: #C6D207}
+

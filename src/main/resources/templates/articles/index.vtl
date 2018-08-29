@@ -1,8 +1,9 @@
 
-
 <div class="topbar-container">
-     <h1 align="center"> TECHNEWS MANAGEMENT</h1>
+    <h1 align="center"> TECHNEWS MANAGEMENT</h1>
 </div>
+
+
 
 <div class = "content-container">
     <div class="flex-container">
@@ -15,13 +16,13 @@
 
         <div>
             <form action="/articles" method="get">
-                <label for="category">Category:</label>
+                <label for="category">Filter by category:</label>
                 <br>
                 <select id="category" name="category">
                     #foreach( $category in $categories )
                     <option value="$category.getId()">$category.getName()</option>
                     #end
-                </select>
+                </select><br>
                 <input type="submit" value="Submit">
             </form>
         </div>
@@ -29,29 +30,22 @@
 
         <div>
             <form action="/articles" method="get">
-                <label for="journalist">Journalist:</label>
+                <label for="journalist">Filter by journalist:</label>
                 <br>
                 <select id="journalist" name="journalist">
                     #foreach( $journalist in $journalists )
                     <option value="$journalist.getId()">$journalist.getName()</option>
                     #end
-                </select>
+                </select><br>
                 <input type="submit" value="Submit">
             </form>
         </div>
 
 
 
-        <div>
-            <form action="/articles" method="get">
-                <label for="search" id="search">Search for an article: </label>
-                <input type="search" placeholder="Search.." name="matchString">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
 
         <div>
-            <a href="/articles" class="button-create">Back</a>
+            <a href="/articles" class="button-create">See All Articles</a>
         </div>
 
 
@@ -74,8 +68,14 @@
             <th> Category: </th>
             <td>$searchResult.getCategory().getName()</td>
         </tr><tr>
+            <th> Written by: </th>
+            <td>$searchResult.getJournalist().getName()</td>
+        </tr><tr>
+            <th> Article Type: </th>
+            <td>$searchResult.getArticleFormat().getHumanReadable()</td>
+        </tr><tr>
             <th>See full article:</th>
-            <td><a href="/articles/$searchResult.getId()" class="button-details">Details</a></td>
+            <td><a href="/articles/$searchResult.getId()" class="button-create">Full Article</a></td>
         </tr>
 
         </table>
@@ -97,9 +97,17 @@
                 <th>Article category:</th>
                 <td>$article.getCategory().getName()</td>
             </tr>
+            <tr>
+                <th>Written by:</th>
+                <td>$article.getJournalist().getName()</td>
+            </tr>
+            <tr>
+                <th>Article type:</th>
+                <td>$article.getArticleFormat().getHumanReadable()</td>
+            </tr>
             <tr class="padded-tr">
                 <th> See full article:</th>
-                <td> <a href="/articles/$article.getId()" class="button-details">Details</a></td>
+                <td> <a href="/articles/$article.getId()" class="button-create">Full article</a></td>
             </tr>
 
 

@@ -20,38 +20,42 @@ public class Seeds {
         DBHelper.save(techNews);
         Category interview = new Category("Interviews");
         DBHelper.save(interview);
+        Category entertainment = new Category("Entertainment");
+        DBHelper.save(entertainment);
+        Category science = new Category("Science");
+        DBHelper.save(science);
 
         Editor mark = new Editor ("Mark Ditzel", LocalDate.of(2015, 12, 31), 1);
         DBHelper.save(mark);
         Editor beata = new Editor ("Beata Ficek", LocalDate.of(2017, 02, 11), 2);
         DBHelper.save(beata);
 
-        Journalist vicky = new Journalist ("Victoria Jackson",  LocalDate.of(2010, 07, 12), 8);
-        DBHelper.save(vicky);
-        Journalist diggory = new Journalist ("Diggory Phillbrow", LocalDate.of (2014, 11,02), 4);
-        DBHelper.save(diggory);
+        Journalist jared = new Journalist ("Jared Dunn",  LocalDate.of(2010, 07, 12), 8);
+        DBHelper.save(jared);
+        Journalist ron = new Journalist ("Ron Swanson", LocalDate.of (2014, 11,02), 4);
+        DBHelper.save(ron);
 
 
 
 
-        Article technews1 = new Article(ArticleFormat.FEATURE, "CodeBase's VR revolution",
+        Article technews1 = new Article(ArticleFormat.COLUMN, "CodeBase's VR revolution",
                 "Chopping-fruit-game has met its' match",
-                beata, vicky, techNews, "Hello", LocalDate.of(2018, 07, 06));
+                beata, jared, techNews, "Hello", LocalDate.of(2018, 07, 06));
         DBHelper.save(technews1);
 
-        Article interview1 = new Article(ArticleFormat.COLUMN, "Codeclan",
+        Article interview1 = new Article(ArticleFormat.SPONSORED, "Codeclan",
                 "Welcome to Codeclan",
-                mark, diggory, interview, "Hello", LocalDate.of(2015, 02, 01));
+                mark, ron, interview, "Hello", LocalDate.of(2015, 02, 01));
         DBHelper.save(interview1);
 
-        Article technews4 = new Article(ArticleFormat.COLUMN, "Codeclan",
+        Article technews4 = new Article(ArticleFormat.LETTER, "Codeclan",
                 "Newest Article",
-                mark, vicky, techNews, "Hello", LocalDate.of(2018, 07, 12));
+                mark, jared, techNews, "Hello", LocalDate.of(2018, 07, 12));
         DBHelper.save(technews4);
 
-        Article technews2 = new Article(ArticleFormat.FEATURE, "Here's what happened to Microsoft's Xbox VR gaming headset",
+        Article entertainment1 = new Article(ArticleFormat.EDITORIAL, "Here's what happened to Microsoft's Xbox VR gaming headset",
                 "The company came close to announcing a VR headset, but it's been put on ice. Here’s why.",
-                mark, diggory, techNews, "Two months ago, Microsoft said it didn't have specific plans to create an Xbox VR headset. What it didn't say is that it had been working on a device, but put existing VR plans on hold until better technology comes along.\n" +
+                mark, ron, entertainment, "Two months ago, Microsoft said it didn't have specific plans to create an Xbox VR headset. What it didn't say is that it had been working on a device, but put existing VR plans on hold until better technology comes along.\n" +
                 "\n" +
                 "Microsoft courted partners over the past couple years to create games for a virtual reality headset designed to work with the Xbox video game console, according to people familiar with the matter. While the physical designs of the device weren't widely known, the screen quality specifications were considered good -- but not as good as those for Facebook's rival Oculus Rift or HTC's Vive headsets, the people said.\n" +
                 "\n" +
@@ -102,7 +106,7 @@ public class Seeds {
                 "But there's another and potentially more pressing question Microsoft would have to answer if it released an Xbox VR device: \"Do Xbox gamers really want VR?\" said Brian Blau, an analyst at Gartner who used to work in the VR industry. Gamers, he noted, tend to be vocal about what they want to buy from companies, and he hasn't noticed many people clamoring for an Xbox headset.\n" +
                 "\n" +
                 "\"I haven't seen the gamer community rally around VR like they have other things,\" he added.", LocalDate.of(2018, 04, 05));
-        DBHelper.save(technews2);
+        DBHelper.save(entertainment1);
 
         List<Article> articles = DBArticle.findArticleByCategory(techNews);
 

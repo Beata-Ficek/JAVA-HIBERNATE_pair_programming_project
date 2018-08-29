@@ -1,13 +1,23 @@
 <p>Edit Article</p>
+<style>
+div {
+padding: 10px}
+</style>
 
+<div class="new-flex-container">
 <form action="/articles/$article.getId()" method="post">
 
+    <div>
     <label for="headline">Headline:</label>
     <input class="inputbox" type="text" name="headline" required="true" value="$article.getHeadline()">
+    </div>
 
+    <div>
     <label for="strapline">Strapline:</label>
     <input class="inputbox" type="text" name="strapline" required="true" value="$article.getStrapline()">
+    </div>
 
+<div>
     <label for="journalist">Journalist:</label>
     <select id="journalist" name="journalist">
         #foreach( $journalist in $journalists )
@@ -18,7 +28,9 @@
             $journalist.getName()</option>
         #end
     </select>
+</div>
 
+<div>
     <label for="editor">Editor:</label>
     <select id="editor" name="editor">
         #foreach( $editor in $editors )
@@ -29,7 +41,9 @@
             $editor.getName()</option>
         #end
     </select>
+</div>
 
+<div>
     <label for="categories">Category:</label>
     <select id="categories" name="category">
         #foreach( $category in $categories )
@@ -40,21 +54,30 @@
             $category.getName()</option>
         #end
     </select>
+</div>
 
+<div>
     <label for="articleFormats">Article Format:</label> <!-- NEW -->
     <select id="articleFormats" name="articleFormat">
         #foreach( $articleFormat in $articleFormats )
         <option value="$articleFormat">$articleFormat.getHumanReadable()</option>
         #end
     </select>
+</div>
 
-    <label for="body">Body:</label>
-    <input type="inputbox" name="body" required="true" class="inputbox" value="$article.getBody()">
 
+<div>
+    <label for="body">Body:</label><br>
+    <textarea class="textarea" name=“body” required=“true” value="$article.getBody()"> </textarea>
+</div>
+
+<div>
     <label for="dateOfSubmission">Submitted on:</label>
     <input type="date" name="dateOfSubmission" required="true" class="inputbox" value="$article.getDateOfSubmission()">
-
-    <input type="submit" value="Save" class="button-nav">
-
+</div>
+    <input type="submit" value="Save" class="button-nav"><br>
+    <a href="/articles" class="button-nav"> Cancel</a>
+</div>
 </form>
-<a href="/articles" class="button-nav"> Cancel</a>
+
+</div>
