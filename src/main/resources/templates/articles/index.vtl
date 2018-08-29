@@ -1,17 +1,22 @@
+<div class="navbar">
+    <div><a href="/journalists" class="button-nav">Manage Journalists</a></div>
+</div>
 
-<a href="/journalists">Manage Journalists</a>
+<div class="topbar-container">
+     <h1 align="center"> TECHNEWS MANAGEMENT</h1>
+</div>
 
-        <h1> Articles</h1>
 <div class = "content-container">
     <div class="flex-container">
 
         <div>
-             <a href="/articles/new" class="button"> Create an Article</a>
+             <a href="/articles/new" class="button-create"> Create an Article</a>
         </div>
 
 
         <div>
             <label for="category">Category:</label>
+            <br>
             <select id="category" name="category">
                 #foreach( $category in $categories )
                     <option value="$category.getId()">$category.getName()</option>
@@ -45,11 +50,12 @@
     </div>
     <div class="table-container">
 
-        <table style="width:70%">
+        #if ($searchResults.size() > 0)
 
-            #if ($searchResults.size() > 0)
+        #foreach($searchResult in $searchResults)
+        <table class="article-break" style="width:100%">
 
-            #foreach($searchResult in $searchResults)
+
             <tr>
                 <th> Headline: </th>
                 <td> $searchResult.getHeadline()</td>
@@ -61,16 +67,16 @@
             <td>$searchResult.getCategory().getName()</td>
         </tr><tr>
             <th>See full article:</th>
-            <td><a href="/articles/$searchResult.getId()">Details</a></td>
+            <td><a href="/articles/$searchResult.getId()" class="button-details">Details</a></td>
         </tr>
-            #end
+
         </table>
+        #end
+        #else
 
+        #foreach($article in $articles)
+        <table class="article-table" style="width:100%">
 
-
-        <table style="width:70%">
-            #else
-            #foreach($article in $articles)
             <tr>
                 <th>Headline:</th>
                 <td>$article.getHeadline()</td>
@@ -83,15 +89,17 @@
                 <th>Article category:</th>
                 <td>$article.getCategory().getName()</td>
             </tr>
-            <tr>
+            <tr class="padded-tr">
                 <th> See full article:</th>
-                <td> <a href="/articles/$article.getId()">Details</a></td>
+                <td> <a href="/articles/$article.getId()" class="button-details">Details</a></td>
             </tr>
 
-            #end
-            #end
+
+
         </table>
-        <p></p>
+        #end
+        #end
+        </div>
     </div>
 
 </div>
