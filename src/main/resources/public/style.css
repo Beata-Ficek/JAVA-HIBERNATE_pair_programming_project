@@ -3,18 +3,37 @@ body {
 background-color: white; }
 
 h1 {
-color: blue; }
+color: blue;
+position: center;
+}
 
 .searchbar {
 
 }
 
-ul {
- list-style-type: none;
- margin: 0;
- padding:0;
+
+
+.flex-container {
+  flex-direction: column;
+  display: flex;
+  min-width: 200px;
+  width: 16%;
+  background-color: DodgerBlue;
+
 }
 
-li {
-display: inline;
-}
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 4px;
+  padding: 12px;
+  font-size: 17px;
+  }
+
+
+  table {
+    float: left;
+  }
+
+  .content-container {
+    display :flex;
+  }

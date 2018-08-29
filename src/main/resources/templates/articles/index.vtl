@@ -1,56 +1,59 @@
 
-    <li><a href="/journalists">Manage Journalists</a>
+<a href="/journalists">Manage Journalists</a>
 
-<h1> Articles</h1>
+        <h1> Articles</h1>
+<div class = "content-container">
+    <div class="flex-container">
 
-
-<div>
-<a href="/articles/new" class="button"> Create an Article</a>
-</div>
-
-<br><br>
-<body>
-
-<container class = >
-<label for="category">Category:</label>
-<select id="category" name="category">
-#foreach( $category in $categories )
-<option value="$category.getId()">$category.getName()</option>
-#end
-</select>
-<br><br>
-<label for="journalist">Journalist:</label>
-<select id="journalist" name="journalist">
-    #foreach( $journalist in $journalists )
-    <option value="$category.getId()">$journalist.getName()</option>
-    #end
-</select>
-<br><br>
+        <div>
+             <a href="/articles/new" class="button"> Create an Article</a>
+        </div>
 
 
-<!--DON'T TOUCH THE STUFF BELOW-->
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+                #foreach( $category in $categories )
+                    <option value="$category.getId()">$category.getName()</option>
+                #end
+            </select>
+        </div>
 
-<div class = "searchbar">
-    <!--<form + submit button>-->
-    <form action="/articles" method="get">
-        <label for="search" id="search">Search for an article: </label>
-        <input type="search" placeholder="Search.." name="matchString">
-        <input type="submit" value="Submit">
-    </form>
-</div>
-<br>
-<a href="/articles">Back</a>
-<br><br>
-<div class="container">
-<table style="width:70%">
+        <div>
+            <label for="journalist">Journalist:</label>
+            <select id="journalist" name="journalist">
+                #foreach( $journalist in $journalists )
+                    <option value="$category.getId()">$journalist.getName()</option>
+                #end
+            </select>
+        </div>
 
-    #if ($searchResults.size() > 0)
 
-        #foreach($searchResult in $searchResults)
-        <tr>
-            <th> Headline: </th>
-            <td> $searchResult.getHeadline()</td>
-        </tr><tr>
+        <div>
+            <form action="/articles" method="get">
+                <label for="search" id="search">Search for an article: </label>
+                <input type="search" placeholder="Search.." name="matchString">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div>
+            <a href="/articles">Back</a>
+        </div>
+
+
+    </div>
+    <div class="table-container">
+
+        <table style="width:70%">
+
+            #if ($searchResults.size() > 0)
+
+            #foreach($searchResult in $searchResults)
+            <tr>
+                <th> Headline: </th>
+                <td> $searchResult.getHeadline()</td>
+            </tr><tr>
             <th> Strapline: </th>
             <td> $searchResult.getStrapline()</td>
         </tr><tr>
@@ -59,35 +62,40 @@
         </tr><tr>
             <th>See full article:</th>
             <td><a href="/articles/$searchResult.getId()">Details</a></td>
+        </tr>
+            #end
+        </table>
+
+
+
+        <table style="width:70%">
+            #else
+            #foreach($article in $articles)
+            <tr>
+                <th>Headline:</th>
+                <td>$article.getHeadline()</td>
             </tr>
-        <tr></tr>
-        #end
-</table>
+            <tr>
+                <th>Strapline:</th>
+                <td>$article.getStrapline()</td>
+            </tr>
+            <tr>
+                <th>Article category:</th>
+                <td>$article.getCategory().getName()</td>
+            </tr>
+            <tr>
+                <th> See full article:</th>
+                <td> <a href="/articles/$article.getId()">Details</a></td>
+            </tr>
 
+            #end
+            #end
+        </table>
+        <p></p>
+    </div>
 
-
-    <table style="width:70%">
-    #else
-        #foreach($article in $articles)
-        <tr>
-            <th>Headline:</th>
-            <td>$article.getHeadline()</td>
-        </tr>
-        <tr>
-            <th>Strapline:</th>
-            <td>$article.getStrapline()</td>
-        </tr>
-        <tr>
-            <th>Article category:</th>
-            <td>$article.getCategory().getName()</td>
-        </tr>
-        <tr>
-            <th> See full article:</th>
-            <td> <a href="/articles/$article.getId()">Details</a></td>
-        </tr>
-
-        #end
-    #end
-</table>
 </div>
-</body>
+
+
+
+
