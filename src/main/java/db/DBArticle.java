@@ -2,6 +2,7 @@ package db;
 
 import models.Article;
 import models.Category;
+import models.Journalist;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -63,5 +64,22 @@ public class DBArticle {
         return results;
 
     }
+
+    public static List<Article> findArticleByJournalist(Journalist journalist) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> results = null;
+        try {
+            Criteria cr = session.createCriteria(Article.class);
+            cr.add(Restrictions.eq("journalist", journalist));
+            results = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
+
+    }
+
 
 }

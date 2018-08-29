@@ -7,6 +7,7 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,11 +52,31 @@ public class ArticlesController {
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Article> articles = DBArticle.orderByDate();
+            List<Article> searchResults = new ArrayList<Article>();
+
             String matchString = req.queryParams("matchString");
-            List<Article> searchResults = DBArticle.searchArticlesByTitle(matchString);
+            if (matchString != null){
+                searchResults = DBArticle.searchArticlesByTitle(matchString);
+            }
+
+            String category = req.queryParams("category");
+            if (category != null){
+                Integer intId = Integer.parseInt(category);
+                Category foundCategory = DBHelper.find(Category.class, intId);
+                searchResults = DBArticle.findArticleByCategory(foundCategory);
+            }
+
+            String journalist = req.queryParams("journalist");
+            if (journalist != null){
+                Integer intId = Integer.parseInt(journalist);
+                Journalist foundJournalist = DBHelper.find(Journalist.class, intId);
+                searchResults = DBArticle.findArticleByJournalist(foundJournalist);
+            }
+
+
             List<Category> categories = DBHelper.getAll(Category.class);
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-//
+
 //            Integer intId = Integer.parseInt(req.params(":id"));
 //            Category category = DBHelper.find(Category.class, intId);
 //            List<Article> filterResults = DBArticle.findArticleByCategory(category);

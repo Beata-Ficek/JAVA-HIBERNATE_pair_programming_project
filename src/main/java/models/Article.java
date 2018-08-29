@@ -17,6 +17,7 @@ public class Article {
     private boolean approved;
     private String body;
     private LocalDate dateOfSubmission;
+    private boolean isEnabled;
 
 
     public Article(){
@@ -39,6 +40,7 @@ public class Article {
         this.approved = false;
         this.body = body;
         this.dateOfSubmission = date;
+        this.isEnabled = true;
 
 
     }
@@ -137,5 +139,14 @@ public class Article {
 
     public void setDateOfSubmission(LocalDate dateOfSubmission) {
         this.dateOfSubmission = dateOfSubmission;
+    }
+
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }

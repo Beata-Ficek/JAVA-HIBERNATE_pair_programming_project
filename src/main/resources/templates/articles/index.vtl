@@ -12,24 +12,34 @@
         </div>
 
 
-        <div>
-            <label for="category">Category:</label>
-            <br>
-            <select id="category" name="category">
-                #foreach( $category in $categories )
-                    <option value="$category.getId()">$category.getName()</option>
-                #end
-            </select>
-        </div>
 
         <div>
-            <label for="journalist">Journalist:</label>
-            <select id="journalist" name="journalist">
-                #foreach( $journalist in $journalists )
-                    <option value="$category.getId()">$journalist.getName()</option>
-                #end
-            </select>
+            <form action="/articles" method="get">
+                <label for="category">Category:</label>
+                <br>
+                <select id="category" name="category">
+                    #foreach( $category in $categories )
+                    <option value="$category.getId()">$category.getName()</option>
+                    #end
+                </select>
+                <input type="submit" value="Submit">
+            </form>
         </div>
+
+
+        <div>
+            <form action="/articles" method="get">
+                <label for="journalist">Journalist:</label>
+                <br>
+                <select id="journalist" name="journalist">
+                    #foreach( $journalist in $journalists )
+                    <option value="$journalist.getId()">$journalist.getName()</option>
+                    #end
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
 
 
         <div>
@@ -41,7 +51,7 @@
         </div>
 
         <div>
-            <a href="/articles">Back</a>
+            <a href="/articles" class="button-create">Back</a>
         </div>
 
 

@@ -18,8 +18,8 @@ public class Seeds {
 
         Category techNews = new Category("Tech News");
         DBHelper.save(techNews);
-        Category interviews = new Category("Interviews");
-        DBHelper.save(interviews);
+        Category interview = new Category("Interviews");
+        DBHelper.save(interview);
 
         Editor mark = new Editor ("Mark Ditzel", LocalDate.of(2015, 12, 31), 1);
         DBHelper.save(mark);
@@ -39,10 +39,10 @@ public class Seeds {
                 beata, vicky, techNews, "Hello", LocalDate.of(2018, 07, 06));
         DBHelper.save(technews1);
 
-        Article technews3 = new Article(ArticleFormat.COLUMN, "Codeclan",
+        Article interview1 = new Article(ArticleFormat.COLUMN, "Codeclan",
                 "Welcome to Codeclan",
-                mark, diggory, techNews, "Hello", LocalDate.of(2015, 02, 01));
-        DBHelper.save(technews3);
+                mark, diggory, interview, "Hello", LocalDate.of(2015, 02, 01));
+        DBHelper.save(interview1);
 
         Article technews4 = new Article(ArticleFormat.COLUMN, "Codeclan",
                 "Newest Article",
