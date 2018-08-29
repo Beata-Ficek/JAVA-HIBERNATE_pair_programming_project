@@ -1,3 +1,11 @@
+    .new-flex-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+
+    }
+
     body {
       background-color: #F4F4F9;
       font-family: 'Droid Serif', serif;
@@ -103,7 +111,7 @@ justify-content: center;
     border-radius: 6px;}
 
        .button-create{
-        background-color: black;
+        background-color: #04724D;
         border: none;
         color: white;
         padding: 10px 20px;
@@ -122,7 +130,7 @@ justify-content: center;
       text-decoration: none;
       display: inline-block;
       font-size: 14px;
-      border-radius: 6px;}
+      border-radius: 3px;}
 
     .button-container{
     margin-top: 30px
@@ -147,3 +155,11 @@ padding-bottom: 15px;
 th {
 width: 100px;
 }
+
+.textarea{
+width:500px;
+height:250px;
+}
+
+
+
