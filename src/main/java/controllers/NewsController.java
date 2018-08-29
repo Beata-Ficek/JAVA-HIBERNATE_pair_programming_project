@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.SparkBase.staticFileLocation;
 
 public class NewsController {
 
@@ -15,7 +16,7 @@ public class NewsController {
 
         Seeds.seedData();
 
-//        staticFileLocation("/public");
+        staticFileLocation("/public");
 
         ArticlesController articlesController = new ArticlesController();
         JournalistController journalistController = new JournalistController();
@@ -25,5 +26,12 @@ public class NewsController {
         model.put("template", "templates/main.vtl");
         return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/contact", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/main.vtl");
+            return new ModelAndView(model, "templates/contact.vtl");
+        }, new VelocityTemplateEngine());
+
     }
 }

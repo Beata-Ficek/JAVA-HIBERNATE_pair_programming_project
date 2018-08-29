@@ -4,6 +4,7 @@ import models.*;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class Seeds {
     public static void seedData() {
@@ -102,6 +103,11 @@ public class Seeds {
                 "\n" +
                 "\"I haven't seen the gamer community rally around VR like they have other things,\" he added.", LocalDate.of(2018, 04, 05));
         DBHelper.save(technews2);
+
+        List<Article> articles = DBArticle.findArticleByCategory(techNews);
+
     }
+
+
 
 }

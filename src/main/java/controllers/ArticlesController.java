@@ -53,6 +53,16 @@ public class ArticlesController {
             List<Article> articles = DBArticle.orderByDate();
             String matchString = req.queryParams("matchString");
             List<Article> searchResults = DBArticle.searchArticlesByTitle(matchString);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+//
+//            Integer intId = Integer.parseInt(req.params(":id"));
+//            Category category = DBHelper.find(Category.class, intId);
+//            List<Article> filterResults = DBArticle.findArticleByCategory(category);
+//            model.put("filterResults", filterResults);
+
+            model.put("journalists", journalists);
+            model.put("categories", categories);
             model.put("searchResults", searchResults);
             model.put("articles", articles);
             model.put("template", "templates/articles/index.vtl");
@@ -60,7 +70,7 @@ public class ArticlesController {
         }, new VelocityTemplateEngine());
 
 
-//        NEW
+//        GET NEW
 
         get("/articles/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

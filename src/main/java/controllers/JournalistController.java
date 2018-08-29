@@ -76,6 +76,16 @@ public class JournalistController{
             return new ModelAndView(new HashMap<String, Object>(), "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+//        post("/journalists/:id/disable", (req, res) ->{
+//            int id = Integer.parseInt(req.params(":id"));
+//            Journalist journalist = DBHelper.find(Journalist.class, id);
+//            journalist.setEnabled(false);
+//            DBHelper.update(journalist);
+//            res.redirect("/journalists");
+//            return null;
+//        }, new VelocityTemplateEngine());
+
+
 
         // EDIT = Update a pre-existing journalist
         get("/journalists/:id/edit", (req, res) -> {
