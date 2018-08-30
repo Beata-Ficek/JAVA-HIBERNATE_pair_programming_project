@@ -13,16 +13,12 @@
     }
 
     h1 {
-      color: white;
+
       position: center;
       position: relative;
      font-family: 'Roboto', sans-serif;
       font-weight: bold;
-       font-size: 50px
-    }
-
-    .searchbar {
-
+       font-size: 40px
     }
 
 
@@ -31,15 +27,19 @@
       display: flex;
       min-width: 200px;
       width: 16%;
-      background-color: #fbfbfb;
+      background-color: white;
 
     }
 
     .flex-container > div {
-      background-color: #fbfbfb;
+      background-color: white;
       margin: 4px;
-      padding: 12px;
+      padding: 8px;
       font-size: 17px;
+      }
+
+      .flex-container:first-child {
+      padding: 0px;
       }
 
 .nav2-container{
@@ -61,6 +61,7 @@ justify-content: center;
 
     .content-container {
         display :flex;
+        padding: 30px;
     }
 
     table {
@@ -164,7 +165,7 @@ justify-content: center;
     background-color: #080357;
      display: block;
         padding: 6px;
-        margin-bottom: 40px;
+
 }
 
 .article-table:last-child {
@@ -187,6 +188,20 @@ p{
        font-size:20px
 }
 
-.color-container{
+.color-container-green{
 color: #C6D207}
 
+.color-container-white{
+color: white;
+}
+
+
+
+.image {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+
+  padding-top: 0px;
+  padding-right: 20px;
+}
