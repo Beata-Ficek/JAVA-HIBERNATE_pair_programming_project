@@ -36,6 +36,7 @@
       margin: 4px;
       padding: 8px;
       font-size: 17px;
+
       }
 
       .flex-container:first-child {
@@ -62,6 +63,7 @@ justify-content: center;
     .content-container {
         display :flex;
         padding: 30px;
+        padding-left: 325px;
     }
 
     table {
