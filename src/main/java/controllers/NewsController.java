@@ -8,11 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.SparkBase.port;
 import static spark.SparkBase.staticFileLocation;
 
 public class NewsController {
 
     public static void main(String[] args) {
+
+        port(getHerokuAssignedPort());
 
         Seeds.seedData();
 
@@ -32,6 +35,13 @@ public class NewsController {
             model.put("template", "templates/main.vtl");
             return new ModelAndView(model, "templates/contact.vtl");
         }, new VelocityTemplateEngine());
+    }
 
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567;
     }
 }
