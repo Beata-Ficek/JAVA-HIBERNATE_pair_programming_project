@@ -9,7 +9,9 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <!--<property name="hibernate.connection.username"></property>-->
         <!--<property name="hibernate.connection.password"></property>-->
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/technewsdb</property>
+        <property name="hibernate.connection.url">
+            jdbc:postgresql://ec2-54-221-225-11.compute-1.amazonaws.com/d7fo9n67s7it37?user=zjyhdxwsdakypj&amp;password=cb37b3bc85e8c7c0c929792d0735de4c805fae78dc0072f83f490e1eb4a54695
+        </property>
         <property name="connection_pool_size">1</property>
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="show_sql">true</property>
