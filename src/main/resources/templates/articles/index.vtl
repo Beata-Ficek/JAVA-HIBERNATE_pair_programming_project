@@ -47,6 +47,13 @@
             </form>
         </div>
 
+        <div>
+            <form action="/articles" method="get">
+                <label for="search" id="search">Search for an article: </label>
+                <input type="search" placeholder="Search.." name="matchString">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
 
 
 
@@ -54,8 +61,8 @@
             <a href="/articles" class="button-create">See All Articles</a>
         </div>
 
-
     </div>
+
     <div class="table-container">
 
         #if ($searchResults.size() > 0)

@@ -54,10 +54,10 @@ public class ArticlesController {
             List<Article> articles = DBArticle.orderByDate();
             List<Article> searchResults = new ArrayList<Article>();
 
-//            String matchString = req.queryParams("matchString");
-//            if (matchString != null){
-//                searchResults = DBArticle.searchArticlesByTitle(matchString);
-//            }
+            String matchString = req.queryParams("matchString");
+            if (matchString != null){
+                searchResults = DBArticle.searchArticlesByTitle(matchString);
+            }
 
             String category = req.queryParams("category");
             if (category != null){
